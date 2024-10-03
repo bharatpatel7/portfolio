@@ -1,6 +1,6 @@
 package bgarsond_a1;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -67,7 +67,7 @@ public class Main {
 
                 portfolio.updatePrice(symbol, price);
             } else if (command.equalsIgnoreCase("getGain")) {
-                System.out.println("Total Gain:" + portfolio.getTotalGain());
+                System.out.println("Total Gain:" + portfolio.getGain());
                 } else if (command.equalsIgnoreCase("search")) {
                     System.out.println("Enter the symbol: ");
                     String symbol = scanner.nextLine();
@@ -79,7 +79,7 @@ public class Main {
                     System.out.println("Invalid command.");
                 }
 
-                scanner.close();
+                //scanner.close();
             
         }
 
