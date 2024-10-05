@@ -38,7 +38,7 @@ public class Stock {
         }
 
         public double getGain() {
-            return this.price * this.quantity - this.bookValue;
+            return this.price * this.quantity - this.bookValue - 9.99;
         }
 
         public static double calculateBookValue(int quantity, double price) {

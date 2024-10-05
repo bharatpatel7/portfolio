@@ -9,7 +9,7 @@ public class Main {
         String command;
 
         while (true) {
-            System.out.println("Enter a command (buy, sell, updaet, getGain, search, quit): ");
+            System.out.println("Enter a command (buy, sell, update, getGain, search, quit): ");
             command = scanner.nextLine();
             
             if (command.equalsIgnoreCase("buy")) {

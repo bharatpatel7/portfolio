@@ -42,7 +42,7 @@ public class MutualFund {
         }
 
         public double getGain() {
-            return this.price * this.quantity - this.bookValue;
+            return this.price * this.quantity - this.bookValue - 45.00;
         }
 
         @Override
