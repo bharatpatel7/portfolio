@@ -38,11 +38,13 @@ public class Stock {
         }
 
         public double getGain() {
-            return this.price * this.quantity - this.bookValue - 9.99;
+            double Gain = this.price * this.quantity - this.bookValue - 9.99;
+            return Math.round(Gain * 100.0) / 100.0;
         }
 
         public static double calculateBookValue(int quantity, double price) {
-            return quantity * price + 9.99;
+            double Value =  quantity * price + 9.99;
+            return Math.round(Value * 100.0) / 100.0;
         }
 
         public String toString() {
