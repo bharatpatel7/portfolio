@@ -8,6 +8,12 @@ public class MutualFund {
         private double bookValue;
 
         //Constructor
+        /**
+        * @param symbol The symbol of the mutual fund
+        * @param name The name of the mutual fund
+        * @param price The price of the mutual fund
+        * @param quantity The quantity of the mutual fund
+        **/
         public MutualFund(String symbol, String name, double price, int quantity) {
             this.symbol = symbol;
             this.name = name;
@@ -17,11 +23,20 @@ public class MutualFund {
         }
 
         //Method to calculate book value
+        /**
+         * @param quantity The quantity of the mutual fund
+         * @param price The price of the mutual fund
+         * @return The book value of the mutual fund
+         */
         public static double calculateBookValue(int quantity, double price) {
             return quantity * price;
         }
 
         //Method to buy mutual fund
+        /**
+         * @param quantity The quantity of the mutual fund
+         * @param price The price of the mutual fund
+         */
         public void buy(int quantity, double price) {
                 double additionalBookValue = calculateBookValue(quantity, price);
                 this.bookValue += additionalBookValue;
@@ -30,6 +45,10 @@ public class MutualFund {
         }
 
         //Method to sell mutual fund
+        /**
+         * @param quantity The quantity of the mutual fund
+         * @param price The price of the mutual fund
+         */
         public void sell(int quantity, double price){
             if (this.quantity < quantity) {
                 System.out.println("Not enough mutual fund to sell.");
@@ -42,11 +61,17 @@ public class MutualFund {
         }
 
         //Method to update price
+        /**
+         * @param price The price of the mutual fund
+         */
         public void updatePrice(double price) {
             this.price = price;
         }
 
         //Method to get gain
+        /**
+         * @return The gain of the mutual fund
+         */
         public double getGain() {
             // Calculate the potential gain if the mutual fund is sold at the current price
             double gain = (this.quantity * this.price - 45.00) - this.bookValue;
@@ -54,12 +79,18 @@ public class MutualFund {
         }
 
         //Method to get symbol
+        /**
+         * @return The symbol of the mutual fund
+         */
         public String getSymbol() {
                 return this.symbol;
         }
 
 
         //Method to get name
+        /**
+         * @return The name of the mutual fund
+         */
         @Override
         public String toString() {
             return "MutualFund [symbol=" + symbol + ", name=" + name + ", quantity=" + quantity + ", price=" + price + ", bookValue=" + bookValue + "]";

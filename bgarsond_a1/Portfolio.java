@@ -7,12 +7,21 @@ public class Portfolio {
     private ArrayList<MutualFund> mutualFunds;
 
     // Constructor
+    /**
+     * Initializes the stock and mutual fund lists
+     */
     public Portfolio() {
         this.stocks = new ArrayList<Stock>();
         this.mutualFunds = new ArrayList<MutualFund>();
     }
 
     // Method to buy stock
+    /**
+     * @param symbol The symbol of the stock
+     * @param name The name of the stock
+     * @param quantity The quantity of the stock
+     * @param price The price of the stock
+     */
     public void buyStock(String symbol, String name, int quantity, double price) {
         for (Stock stock : stocks) {
             if (stock.toString().contains(symbol)) {
@@ -24,6 +33,11 @@ public class Portfolio {
     }
 
     // Method to sell stock
+    /**
+     * @param symbol The symbol of the stock
+     * @param quantity The quantity of the stock
+     * @param price The price of the stock
+     */
     public void sellStock(String symbol, int quantity, double price) {
         for (Stock stock : stocks) {
             if (stock.toString().contains(symbol)) {
@@ -38,6 +52,12 @@ public class Portfolio {
     }
 
     // Method to buy mutual fund
+    /**
+     * @param symbol The symbol of the mutual fund
+     * @param name The name of the mutual fund
+     * @param quantity The quantity of the mutual fund
+     * @param price The price of the mutual fund
+     */
     public void buyMutualFund(String symbol, String name, int quantity, double price) {
         for (MutualFund mutualFund : mutualFunds) {
             if (mutualFund.toString().contains(symbol)) {
@@ -49,6 +69,11 @@ public class Portfolio {
     }
 
     // Method to sell mutual fund
+    /**
+     * @param symbol The symbol of the mutual fund
+     * @param quantity The quantity of the mutual fund
+     * @param price The price of the mutual fund
+     */
     public void sellMutualFund(String symbol, int quantity, double price) {
         for (MutualFund mutualFund : mutualFunds) {
             if (mutualFund.toString().contains(symbol)) {
@@ -63,6 +88,10 @@ public class Portfolio {
     }
 
     // Method to update price
+    /**
+     * @param symbol The symbol of the investment
+     * @param price The price of the investment
+     */
     public void updatePrice(String symbol, double price) {
         for (Stock stock : stocks) {
             if (stock.toString().contains(symbol)) {
@@ -80,6 +109,9 @@ public class Portfolio {
     }
 
     // Method to get gain
+    /**
+     * @return The total gain of the portfolio
+     */
     public double getGain() {
         double totalGain = 0;
 
@@ -105,6 +137,11 @@ public class Portfolio {
 
 
     // Method to search for an investment
+    /**
+     * @param symbol The symbol of the investment
+     * @param keywords The keywords to search for
+     * @param priceRange The price range to search for
+     */
     public void search(String symbol, String keywords, String priceRange) {
     boolean found = false;
 
@@ -131,6 +168,9 @@ public class Portfolio {
     }
 
     // Method to get total gain
+    /**
+     * @return The total gain of the portfolio
+     */
     public double getTotalGain() {
         return 0.0;
     }

@@ -19,32 +19,38 @@ public class Main {
             switch (command) {
                 //When user press buy
                 case "buy":
+                case "b":
                     buyInvestment(scanner, portfolio);
                     break;
 
                 //When user press sell
                 case "sell":
+                case "s":
                     sellInvestment(scanner, portfolio);
                     break;
 
                 //When user press update
                 case "update":
+                case "u":
                     updatePrices(scanner, portfolio);
                     break;
 
                 //When user press getGain
                 case "getgain":
+                case "g":
                     double totalGain = portfolio.getGain();
                     System.out.printf("Total Gain: $%.2f%n", totalGain);
                     break;
 
                 //When user press search
                 case "search":
+                case "se":
                     searchInvestments(scanner, portfolio);
                     break;
 
                 //When user press quit
                 case "quit":
+                case "q":
                     System.out.println("Thank you for using the Portfolio Management System. Goodbye!");
                     scanner.close();
                     return;
@@ -58,6 +64,10 @@ public class Main {
     }
 
     //Method to buy investment
+    /**
+     * @param scanner The scanner object to read user input
+     * @param portfolio The portfolio object to store investments
+     */
     private static void buyInvestment(Scanner scanner, Portfolio portfolio) {
         System.out.print("Enter the type (stock or mutual fund): ");
         String type = scanner.nextLine().trim().toLowerCase();//Normalize input
@@ -93,6 +103,10 @@ public class Main {
     }
 
     //Method to sell investment
+    /**
+     * @param scanner The scanner object to read user input
+     * @param portfolio The portfolio object to store investments
+     */
     private static void sellInvestment(Scanner scanner, Portfolio portfolio) {
         System.out.print("Enter the type (stock or mutual fund): ");
         String type = scanner.nextLine().trim().toLowerCase();
@@ -134,6 +148,10 @@ public class Main {
     }
 
     //Method to update prices
+    /**
+     * @param scanner The scanner object to read user input
+     * @param portfolio The portfolio object to store investments
+     */
     private static void updatePrices(Scanner scanner, Portfolio portfolio) {
         System.out.print("Enter the symbol of the investment to update: ");
         String symbol = scanner.nextLine().trim();
@@ -146,6 +164,10 @@ public class Main {
     }
 
     //Method to search investments
+    /**
+     * @param scanner The scanner object to read user input
+     * @param portfolio The portfolio object to store investments
+     */
     private static void searchInvestments(Scanner scanner, Portfolio portfolio) {
         System.out.print("Enter symbol (or leave empty for none): ");
         String symbol = scanner.nextLine().trim();
