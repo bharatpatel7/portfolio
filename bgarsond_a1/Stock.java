@@ -1,5 +1,8 @@
 package bgarsond_a1;
 
+/**
+ * Represents a stock in the portfolio
+ */
 public class Stock {
         private String symbol;
         private String name;
@@ -22,11 +25,10 @@ public class Stock {
             this.bookValue = calculateBookValue(quantity, price);
         }
 
-        //Method to calculate book value
         /**
+         * This method calculates the book value of the stock
          * @param quantity The quantity of the stock
          * @param price The price of the stock
-         * @return The book value of the stock
          */
         public void buy(int quantity, double price) {
                 double additionalBookValue = calculateBookValue(quantity, price);   // Calculate the book value of the additional stocks

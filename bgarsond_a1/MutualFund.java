@@ -1,5 +1,8 @@
 package bgarsond_a1;
 
+/**
+ * Represents a mutual fund in the portfolio
+ */
 public class MutualFund {
         private String symbol;
         private String name;
@@ -9,11 +12,11 @@ public class MutualFund {
 
         //Constructor
         /**
-        * @param symbol The symbol of the mutual fund
-        * @param name The name of the mutual fund
-        * @param price The price of the mutual fund
-        * @param quantity The quantity of the mutual fund
-        **/
+         * @param symbol The symbol of the mutual fund
+         * @param name The name of the mutual fund
+         * @param price The price of the mutual fund
+         * @param quantity The quantity of the mutual fund
+         */
         public MutualFund(String symbol, String name, double price, int quantity) {
             this.symbol = symbol;
             this.name = name;
@@ -26,7 +29,6 @@ public class MutualFund {
         /**
          * @param quantity The quantity of the mutual fund
          * @param price The price of the mutual fund
-         * @return The book value of the mutual fund
          */
         public static double calculateBookValue(int quantity, double price) {
             return quantity * price;

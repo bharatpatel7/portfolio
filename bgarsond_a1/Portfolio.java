@@ -2,6 +2,9 @@ package bgarsond_a1;
 
 import java.util.ArrayList;
 
+/**
+ * Represents a portfolio of investments
+ */
 public class Portfolio {
     private ArrayList<Stock> stocks;
     private ArrayList<MutualFund> mutualFunds;

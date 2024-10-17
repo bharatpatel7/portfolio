@@ -2,11 +2,18 @@
 
 **Welcome to ePortfolio!** <br>
 
-Generally Investor needs to maintain a portfolio for different investment. So using that Investor can maintain their investmnet and they can keep track of the actions for buying, selling and profit. <br> **_ePortfolio_** has same kind of functionality with different functions which are described below!
+## Problem Statement
+This project aims to solve main problems with investers when they have multiple investmment and they can not able to manage all at once. so **_ePortfolio_** try to manage their portfolio with different investment. this can be perticularly use for Stocks and Mutual Funds.
+
+Example:
+There is one investor and they wants to invest some money in stock. at that time this project helps them to manage portfolio. 
 
 
-## Functionality
-It has total **5 functins** and each has different functionality. <br>
+## Assumptions and Limitations:
+**Assumptions**
+In this project we are not using real time data instead of that we are asumming price of stocks and mutual funds that it can be this price. We are not providing pricing of any stocks or mutual funds we are asking from user the exact price for each stock and mutual fund. also, we are assuming certian amount of commision for stocks and mutual fund and that amount is fixed.
+
+**Limitations**
 
 - `1` - _Buy Stock_
 - `2` - _Sell Stock_
@@ -23,7 +30,8 @@ As Mentioned above Each functions has different functionality.
         <br> 2. *Name* : Name can be actual name of Stock or Mutual Fund Compnay. 
         <br> 3. *Quantity* : Number of Quantity of stock or mutual fund what you want to buy.
         <br> 4. *Price* : Price of stock or mutual fund when you bought it.
-        <br> 5. *Book Value* : Total amount the stocks or mutual funds when you baught. (including comission).
+        <br> 5. *Book Value* : Total amount the stocks or mutual funds when you baught. (including comission).<br>
+2. 
 
 ## Quit the program
 

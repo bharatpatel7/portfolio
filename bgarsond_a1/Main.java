@@ -2,7 +2,18 @@ package bgarsond_a1;
 
 import java.util.Scanner;
 
+/**
+ * Main class to run the Portfolio Management System
+ * This class contains the main method to run the Portfolio Management System
+ * The user can buy, sell, update prices, get gain, search investments, and quit
+ * The user can buy and sell stocks and mutual funds
+ */
 public class Main {
+    /**
+     * Main method to run the Portfolio Management System
+     * This method contains the main menu for the user to interact with the system
+     * @param args The command line arguments
+     */
     public static void main(String[] args) {
         Portfolio portfolio = new Portfolio();
         Scanner scanner = new Scanner(System.in);
@@ -63,8 +74,9 @@ public class Main {
         }
     }
 
-    //Method to buy investment
     /**
+     * This method allows the user to buy an investment
+     * The user can buy a stock or mutual fund
      * @param scanner The scanner object to read user input
      * @param portfolio The portfolio object to store investments
      */
@@ -104,6 +116,8 @@ public class Main {
 
     //Method to sell investment
     /**
+     * This method allows the user to sell an investment
+     * The user can sell a stock or mutual fund
      * @param scanner The scanner object to read user input
      * @param portfolio The portfolio object to store investments
      */
