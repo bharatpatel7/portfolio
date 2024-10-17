@@ -19,7 +19,7 @@ It has total **5 functins** and each has different functionality. <br>
 
 As Mentioned above Each functions has different functionality.
  1. **Buy Stock**: When Inverster wants to buy any stocks then they have to type **buy**. When Investor type **_buy_** after that small menu pops up with some questions. which are listed below:
-        <br> 1. **Symbol** : which is Symbol/Mutual Fund of Stock and, each stock and Mutual fund has _*different symbol*_. You can not use same symbol with Stock and Mutual Fund. It can not be same! 
+        <br> 1. *Symbol* : which is Symbol/Mutual Fund of Stock and, each stock and Mutual fund has _*different symbol*_. You can not use same symbol with Stock and Mutual Fund. It can not be same! 
 
 ## Quit the program
 
