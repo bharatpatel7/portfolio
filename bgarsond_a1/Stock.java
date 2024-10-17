@@ -55,10 +55,30 @@ public class Stock {
             System.out.println("Not enough stock to sell.");
             return;
         }
-                double sellValue = price * quantity - 9.99;
-                this.bookValue *= (double) (this.quantity - quantity) / this.quantity;  // Calculate the new book value
-                this.quantity -= quantity;
-                System.out.println("Sold " + quantity + " stocks. Gain: " + (sellValue - this.bookValue));
+                double sellValue = (quantity * price) - 9.99;
+                System.out.println("Payment Recived: " + sellValue);
+
+                if (this.quantity == quantity) {
+                    double gain = sellValue - this.bookValue;
+                    System.out.println("Gain: " + gain);
+                    this.quantity = 0;
+                    this.bookValue = 0;
+                    System.out.println("Sold all and final gain: " + gain);
+                } else {
+                    int remainingQuantity = this.quantity - quantity;
+                    double soldBookValue = this.bookValue * ((double) quantity / this.quantity);
+                    System.out.println("Book Value Sold: " + soldBookValue);
+
+                    double gain = sellValue - soldBookValue;
+                    System.out.println("Gain: " + gain);
+
+                    double newBookValue = this.bookValue - soldBookValue;
+                    this.bookValue = newBookValue;
+                    this.quantity -= quantity;
+                    System.out.println("New Book Value: " + this.bookValue);
+                    System.out.println("New Quantity: " + this.quantity);
+                    System.out.println("Sold " + quantity + " stocks. Gain: " + gain);
+                }
         }
 
         //Method to get gain
@@ -67,8 +87,13 @@ public class Stock {
          */
         public double getGain() {
                 // Calculate the potential gain if the stock is sold at the current price
-                double gain = (this.quantity * this.price - 9.99) - this.bookValue;     // Calculate the gain
-                return Math.round(gain * 100.0) / 100.0; // Rounded to two decimal places
+                double sellValue = (this.quantity * this.price) - 9.99;     // Calculate the gain
+                System.out.println("Sell Value: " + sellValue);
+                
+                double gain = sellValue - this.bookValue;
+                System.err.println("Book Value: " + this.bookValue);
+                System.out.println("Gain: " + gain);
+               return Math.round(gain * 100.0) / 100.0; // Rounded to two decimal places
         }
 
         //Method to get symbol

@@ -76,7 +76,9 @@ public class MutualFund {
          */
         public double getGain() {
             // Calculate the potential gain if the mutual fund is sold at the current price
-            double gain = (this.quantity * this.price - 45.00) - this.bookValue;
+            double currentSellValue = (this.quantity * this.price) - 45.00;
+            double gain = currentSellValue - this.bookValue;
+
             return Math.round(gain * 100.0) / 100.0; // Rounded to two decimal places
         }
 
