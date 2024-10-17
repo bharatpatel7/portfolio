@@ -35,6 +35,8 @@ public class Portfolio {
         stocks.add(new Stock(symbol, name, price, quantity)); // Add new stock to the list
     }
 
+    
+
     // Method to sell stock
     /**
      * @param symbol The symbol of the stock
@@ -141,9 +143,19 @@ public class Portfolio {
     public void search(String symbol, String keywords, String priceRange) {
     boolean found = false;
 
+        String[] keywordList = keywords.split(" "); // Split keywords into a list
+
+        double minPrice = Double.MIN_VALUE;
+        double maxPrice = Double.MAX_VALUE;
+        if (priceRange.contains("-")) {
+            String[] priceRangeList = priceRange.split("-"); // Split price range into a list
+            minPrice = Double.parseDouble(priceRangeList[0]); // Get minimum price
+            maxPrice = Double.parseDouble(priceRangeList[1]); // Get maximum price
+        }
+
         // Search in the stock list
         for (Stock stock : stocks) {
-            if (stock.getSymbol().equalsIgnoreCase(symbol)) {
+            if (stock.getSymbol().equalsIgnoreCase(symbol) && allKeywordsMatch(stock.getName(), keywordList) && stock.getPrice() >= minPrice && stock.getPrice() <= maxPrice) {
                 System.out.println(stock);  // Print stock details
                 found = true;
             }
@@ -151,7 +163,8 @@ public class Portfolio {
 
         // Search in the mutual fund list
         for (MutualFund mutualFund : mutualFunds) {
-            if (mutualFund.getSymbol().equalsIgnoreCase(symbol)) {
+            if (mutualFund.getSymbol().equalsIgnoreCase(symbol) && allKeywordsMatch(mutualFund.getName(), keywordList) && 
+                mutualFund.getPrice() >= minPrice && mutualFund.getPrice() <= maxPrice) {
                 System.out.println(mutualFund);     // Print mutual fund details
                 found = true;
             }
@@ -162,6 +175,21 @@ public class Portfolio {
             System.out.println("No matching investment found.");
         }
     }
+
+    // Method to check if all keywords match the name
+        /**
+         * @param name The name of the investment
+         * @param keywords The list of keywords to match
+         * @return true if all keywords match, false otherwise
+         */
+        private boolean allKeywordsMatch(String name, String[] keywords) {
+            for (String keyword : keywords) {
+                if (!name.toLowerCase().contains(keyword.toLowerCase())) {
+                    return false;
+                }
+            }
+            return true;
+        }
 
     // Method to get total gain
     /**

@@ -90,6 +90,15 @@ public class MutualFund {
                 return this.symbol;
         }
 
+        public String getName() {
+            return this.name;
+        }
+
+        public  double getPrice() {
+            return this.price;
+        }
+
+
 
         //Method to get name
         /**
@@ -99,5 +108,6 @@ public class MutualFund {
         public String toString() {
             return "MutualFund [symbol=" + symbol + ", name=" + name + ", quantity=" + quantity + ", price=" + price + ", bookValue=" + bookValue + "]";
         }
+        
 
 }

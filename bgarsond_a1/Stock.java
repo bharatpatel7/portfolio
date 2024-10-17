@@ -25,6 +25,14 @@ public class Stock {
             this.bookValue = calculateBookValue(quantity, price);
         }
 
+        public String getName() {
+            return name;
+        }
+
+        public double getPrice() {
+            return price;
+        }
+
         /**
          * This method calculates the book value of the stock
          * @param quantity The quantity of the stock
