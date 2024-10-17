@@ -45,6 +45,7 @@ To set up the project, follow these steps:
 
 ## Compiling Program
 To compile the program, navigate to the project directory and run:
+
 ```sh
 javac *.java
 
@@ -63,4 +64,4 @@ The ePortfolio application supports the following operations:
 - `gain`: Calculate and display the total gain of the portfolio.
 
 ## Owner
-This project is maintained by Bharat Garsondiya. For any questions or contributions, please contact bharat@example.com.
+This project is maintained by Bharat Garsondiya. For any questions or contributions, please contact bgarsond@uoguelph.ca.
