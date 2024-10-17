@@ -2,7 +2,7 @@
 
 **Welcome to ePortfolio!** <br> <br>
 
-        Generally Investor needs to maintain a portfolio for different investment. So using that Investor can maintain their investmnet and they can keep track of the actions for buying, selling and profit. <br> **_ePortfolio_** has same kind of functionality with different functions which are described below!
+Generally Investor needs to maintain a portfolio for different investment. So using that Investor can maintain their investmnet and they can keep track of the actions for buying, selling and profit. <br> **_ePortfolio_** has same kind of functionality with different functions which are described below!
 
 
 ## Functionality
