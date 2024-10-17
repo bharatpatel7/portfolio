@@ -66,8 +66,8 @@ The ePortfolio application supports the following operations:
 - `gain`: Calculate and display the total gain of the portfolio.
 
 ## Test Plan and Output
-All the Test plan and Expected outputs are in Text file. 
-for Test plan  follow *testplan.txt*
+All the Test plan and Expected outputs are in Text file. <br>
+for Test plan  follow *testplan.txt* <br>
 for expected output follow *testPlan_expectedOutput.txt*
 
 ## Owner
