@@ -129,13 +129,6 @@ public class Portfolio {
     }
 
 
-    
-
-    // public String getSymbol() {
-    //     return this.symbol;
-    // }
-
-
     // Method to search for an investment
     /**
      * @param symbol The symbol of the investment
@@ -172,7 +165,8 @@ public class Portfolio {
      * @return The total gain of the portfolio
      */
     public double getTotalGain() {
-        return 0.0;
+        return Math.round(getTotalGain() * 100.0) / 100.0; // Rounded to two decimal places
+        //return 0.0;
     }
 
 

@@ -79,7 +79,7 @@ public class Main {
         }
 
         System.out.print("Enter the symbol: ");
-        String symbol = scanner.nextLine().trim();
+        String symbol = scanner.nextLine().trim().toLowerCase();
 
         System.out.print("Enter the name: ");
         String name = scanner.nextLine().trim();
@@ -112,7 +112,7 @@ public class Main {
         String type = scanner.nextLine().trim().toLowerCase();
 
         System.out.print("Enter the symbol: ");
-        String symbol = scanner.nextLine().trim();
+        String symbol = scanner.nextLine().trim().toLowerCase();
 
         System.out.print("Enter the quantity to sell: ");
         int quantity = Integer.parseInt(scanner.nextLine().trim());
@@ -170,7 +170,7 @@ public class Main {
      */
     private static void searchInvestments(Scanner scanner, Portfolio portfolio) {
         System.out.print("Enter symbol (or leave empty for none): ");
-        String symbol = scanner.nextLine().trim();
+        String symbol = scanner.nextLine().trim().toUpperCase();
 
         System.out.print("Enter keywords for the name (or leave empty for none): ");
         String keywords = scanner.nextLine().trim();
