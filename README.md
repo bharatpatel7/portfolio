@@ -5,7 +5,8 @@
 
 
 ## Functionality
-        It has total **5 functins** and each has different functionality. <br>
+It has total **5 functins** and each has different functionality. <br>
+
 - `1` - _Buy Stock_
 - `2` - _Sell Stock_
 - `3` - _Update Stock_
