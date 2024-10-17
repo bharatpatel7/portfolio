@@ -1,0 +1,39 @@
+﻿
+buy
+stock
+AAPL
+Apple Inc.
+10
+240
+buy
+stock
+AAPL
+Apple Inc.
+20
+240
+buy
+stock
+TSLA
+Tesla Inc.
+10
+120
+buy
+mutual fund
+UAPIX
+ProFunds UltraSmall Cap Fund
+10
+230
+search
+AAPL
+
+
+update
+AAPL
+340
+getGain
+search
+TSLA
+
+
+
+quit

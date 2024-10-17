@@ -1,0 +1,53 @@
+to Compile file:
+Javac *.java
+
+to run file
+Java -jar eportfolio.jar
+
+<input>
+buy
+stock
+AAPL
+Apple Inc.
+10
+200
+
+<expected output>
+...prompts...
+You have successfully bought 10 shares of Apple at $200.00 each.
+...prompts...
+
+<input>
+AAPL
+550
+
+
+<expected output>
+...prompts...
+Price for AAPL has been updated to $550.00.
+...prompts...
+
+<input>
+getGain
+
+<expected output>
+...prompts...
+Total Gain: $-19.98
+...prompts...
+
+<input>
+search
+AAPL
+
+<expected output>
+...prompts...
+Stock [symbol=aapl, name=Apple, quantity=10, price=200.0, bookValue=2009.99]
+...prompts...
+
+<input>
+quit
+
+<expected output>
+...prompts...
+Thank you for using the Portfolio Management System. Goodbye!
+

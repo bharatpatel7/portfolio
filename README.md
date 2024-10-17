@@ -8,7 +8,8 @@
 7. [Files](#files)
 8. [Compiling Program](#compiling-program)
 9. [Operations](#operations)
-10. [Owner](#owner)
+10. [Test Plan and Output](#test-plan-and-output)
+11. [Owner](#owner)
 
 ## Introduction
 Welcome to the ePortfolio project! This Java-based application is designed to help investors manage their portfolios, specifically focusing on stocks and mutual funds. The platform provides tools and insights to assist users in making informed investment decisions.
@@ -63,6 +64,11 @@ The ePortfolio application supports the following operations:
 - `search`: Search for assets based on criteria such as symbol or name.
 - `view`: View detailed information about a specific asset.
 - `gain`: Calculate and display the total gain of the portfolio.
+
+## Test Plan and Output
+All the Test plan and Expected outputs are in Text file. 
+for Test plan  follow *testplan.txt*
+for expected output follow *testPlan_expectedOutput.txt*
 
 ## Owner
 This project is maintained by Bharat Garsondiya. For any questions or contributions, please contact bgarsond@uoguelph.ca.
