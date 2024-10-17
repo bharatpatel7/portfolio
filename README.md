@@ -48,6 +48,7 @@ To compile the program, navigate to the project directory and run:
 
 ```sh
 javac *.java
+```
 
 ## Running the Program
 To run the compiled program, use the following command:
