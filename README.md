@@ -1,6 +1,6 @@
 # CIS2430-F24-A1
 
-**Welcome to ePortfolio!** <br> <br>
+**Welcome to ePortfolio!** <br>
 
 Generally Investor needs to maintain a portfolio for different investment. So using that Investor can maintain their investmnet and they can keep track of the actions for buying, selling and profit. <br> **_ePortfolio_** has same kind of functionality with different functions which are described below!
 
