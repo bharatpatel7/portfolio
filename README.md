@@ -56,14 +56,20 @@ To run the compiled program, use the following command:
 ```sh
 java main
 ```
+## Another way to run Pogram
+To run with JAR File you need to use java versoin 17.0.12 at minimum.
+```sh
+java -jar eportfolio.jar
+```
 
 ## Operations
 The ePortfolio application supports the following operations:
-- `add`: Add a new stock or mutual fund to the portfolio.
-- `remove`: Remove an existing asset from the portfolio.
-- `search`: Search for assets based on criteria such as symbol or name.
-- `view`: View detailed information about a specific asset.
+- `buy`: Buy a new stock or mutual fund to the portfolio.
+- `sell`: Sell an existing asset from the portfolio.
+- `update`: Update value to the existing stocks or mutual funds.
+- `search`: Serch for assets based on criteria such as symbol or name.
 - `gain`: Calculate and display the total gain of the portfolio.
+- `quit`: To exit the program.
 
 ## Test Plan and Output
 All the Test plan and Expected outputs are in Text file. <br>
@@ -72,6 +78,3 @@ for expected output follow *testPlan_expectedOutput.txt*
 
 ## Owner
 This project is maintained by Bharat Garsondiya. For any questions or contributions, please contact bgarsond@uoguelph.ca.
-
-## Test for Daman
-Hey this is Daman!
