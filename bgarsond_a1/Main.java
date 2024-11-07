@@ -1,5 +1,6 @@
 package bgarsond_a1;
 
+import java.io.*;
 import java.util.Scanner;
 
 /**
@@ -15,7 +16,21 @@ public class Main {
      * @param args The command line arguments
      */
     public static void main(String[] args) {
+        
+        if (args.length != 1){
+            System.out.println("Usage: java Portfolio <filename>");
+            return;
+        }
+
+        String filename = args[0];
         Portfolio portfolio = new Portfolio();
+
+        try{
+            loadInvestments(portfolio, filename);
+        }catch(IOException e){
+            System.out.println("Error loading investments: " + e.getMessage());
+        }
+
         Scanner scanner = new Scanner(System.in);
         String command;
 
@@ -62,6 +77,8 @@ public class Main {
                 //When user press quit
                 case "quit":
                 case "q":
+                    portfolio.saveInvestmentToFile(filename);
+                    System.out.println("Investments saved to " + filename);
                     System.out.println("Thank you for using the Portfolio Management System. Goodbye!");
                     scanner.close();
                     return;
@@ -73,6 +90,69 @@ public class Main {
             }
         }
     }
+    
+
+    private static void loadInvestments(Portfolio portfolio, String filename) throws IOException {
+        File file = new File(filename);
+
+        if(!file.exists()){
+            System.out.println("File does not exist. Creating a new file...");
+            if (file.createNewFile()){
+                System.out.println("File created: " + file.getName());
+            }else{
+                System.out.println("Error creating the file.");
+            }
+            return;
+        }
+
+        try(BufferedReader reader = new BufferedReader(new FileReader(file))){
+            String line;
+            Investment investment = null;
+
+            while ((line = reader.readLine()) != null){
+                line = line.trim();
+                if(line.startsWith("type =")){
+                    String type = line.split("=")[1].trim().replace("\"", "");
+                    investment = type.equals("stock") ? new Stock("", "", 0.0, 0) : new MutualFund("", "", 0.0, 0);
+                } else if (investment != null) {
+                    if (line.startsWith("symbol =")){
+                        investment.setSymbol(line.split("=")[1].trim().replace("\"", ""));
+                    } else if (line.startsWith("name =")){
+                        investment.setName(line.split("=")[1].trim().replace("\"", ""));
+                    }
+                }
+                if (investment != null) {
+                    portfolio.addInvestment(investment);
+                    investment = null;
+                }
+        } 
+        } catch (IOException e){
+            System.out.println("Error loading investments: " + e.getMessage());
+        }
+    
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))){
+            String line;
+            Investment investment = null;
+
+            while((line = reader.readLine()) != null){
+                line = line.trim();
+                if(line.startsWith("type =")){
+                    String type = line.split("=")[1].trim().replace("\"", "");
+                    investment = type.equals("stock") ? new Stock("", "", 0.0, 0) : new MutualFund("", "", 0.0, 0);
+            }else if (investment != null) {
+                if (line.startsWith("symbol =")){
+                    investment.setSymbol(line.split("=")[1].trim().replace("\"", ""));
+                }else if(line.startsWith("name =")) {
+                    investment.setName(line.split("=")[1].trim().replace("\"", ""));
+                }
+
+            }
+            }
+            }
+        }
+
+
 
     /**
      * This method allows the user to buy an investment

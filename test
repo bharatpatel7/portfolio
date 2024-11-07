@@ -1,0 +1,6 @@
+type = "stock"
+symbol = "aapl"
+name = "Apple"
+quantity = 10
+price = 50.0
+bookValue = 509.99

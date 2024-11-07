@@ -3,12 +3,7 @@ package bgarsond_a1;
 /**
  * Represents a mutual fund in the portfolio
  */
-public class MutualFund {
-        private String symbol;
-        private String name;
-        private double price;
-        private int quantity;
-        private double bookValue;
+public class MutualFund extends Investment {
 
         //Constructor
         /**
@@ -18,11 +13,7 @@ public class MutualFund {
          * @param quantity The quantity of the mutual fund
          */
         public MutualFund(String symbol, String name, double price, int quantity) {
-            this.symbol = symbol;
-            this.name = name;
-            this.price = price;
-            this.quantity = quantity;
-            this.bookValue = calculateBookValue(quantity, price);
+            super(symbol, name, price, quantity);
         }
 
         //Method to calculate book value
@@ -30,7 +21,7 @@ public class MutualFund {
          * @param quantity The quantity of the mutual fund
          * @param price The price of the mutual fund
          */
-        public static double calculateBookValue(int quantity, double price) {
+        protected  double calculateBookValue(int quantity, double price) {
             return quantity * price;
         }
 
@@ -74,6 +65,7 @@ public class MutualFund {
         /**
          * @return The gain of the mutual fund
          */
+        @Override
         public double getGain() {
             // Calculate the potential gain if the mutual fund is sold at the current price
             double currentSellValue = (this.quantity * this.price) - 45.00;
@@ -96,6 +88,10 @@ public class MutualFund {
 
         public  double getPrice() {
             return this.price;
+        }
+
+        public int getQuantity() {
+            return this.quantity;
         }
 
 
