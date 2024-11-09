@@ -18,9 +18,15 @@ The ePortfolio System is a Java-based application for managing and tracking inve
    ```bash
    javac ePortfolio/*.java
    ```
+
 2. **Run the Application**: Start the program by running the main file.
    ```bash
-   java ePortfolio.Main
+   java ePortfolio.Main 2430
+   ```
+
+2. **Run the Application with JAR file**: Start the program by running the main file.
+   ```bash
+   java jar ePortfolio.jar 2430
    ```
 
 ## Usage
