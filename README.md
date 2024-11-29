@@ -38,7 +38,7 @@ javac ePortfolio/*.java
 ### Run the Application
 Start the application using:
 ```bash
-java ePortfolio.Main <optional-arguments>
+java ePortfolio.MainGUI <optional-arguments>
 ```
 
 Alternatively, run the application using the JAR file:
