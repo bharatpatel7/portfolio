@@ -417,7 +417,7 @@ public class Portfolio {
     public void loadInvestments(String filename){
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-            
+
             String line;
             Investment investment = null;
 
@@ -560,13 +560,13 @@ public class Portfolio {
 
             for (Investment investment : investment){
                 writer.println(investment.toString());
-                /* writer.write("type = \"" + investment.getClass().getSimpleName().toLowerCase() + "\"\n");
+                writer.write("type = \"" + investment.getClass().getSimpleName().toLowerCase() + "\"\n");
                 writer.write("symbol = \"" + investment.getSymbol() + "\"\n");
                 writer.write("name = \"" + investment.getName() + "\"\n");
                 writer.write("quantity = " + investment.getQuantity() + "\n");
                 writer.write("price = " + investment.getPrice() + "\n");
                 writer.write("bookValue = " + investment.getBookValue() + "\n");
-                writer.write("\n"); */
+                writer.write("\n"); 
 
             }
 
