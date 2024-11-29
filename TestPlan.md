@@ -1,156 +1,154 @@
 
-### **Test Plan for ePortfolio System**
+```markdown
+# **Test Plan for ePortfolio System**
 
-#### **Overview**
-The ePortfolio system allows users to manage stocks and mutual funds in a portfolio. The key operations include:
-- Adding a new investment (stock or mutual fund)
-- Updating the investment quantity and price
-- Calculating the total value of the portfolio
-- Displaying portfolio details
-- Handling user inputs in a menu-driven interface
+## **Overview**
+The ePortfolio system allows users to manage stocks and mutual funds in a portfolio. Key operations include:
+- Adding a new investment (stock or mutual fund).
+- Updating the investment quantity and price.
+- Calculating the total value of the portfolio.
+- Displaying portfolio details.
+- Handling user inputs in a menu-driven interface.
 
 The goal of testing is to ensure that the system performs as expected for all operations.
 
-#### **Key Testing Scenarios**
+---
+
+## **Key Testing Scenarios**
 
 1. **Adding an Investment**
-   - Validating input for stock and mutual fund investments.
-   - Ensuring the system handles both types correctly (e.g., stock commission vs. mutual fund redemption fees).
-   - Checking for edge cases such as negative values or non-numeric inputs.
+   - Validate input for stock and mutual fund investments.
+   - Ensure the system handles both investment types correctly (e.g., stock commission vs. mutual fund redemption fees).
+   - Check edge cases, such as negative values or non-numeric inputs.
 
 2. **Updating an Investment**
-   - Verifying that updating an investment correctly adjusts its quantity and price.
-   - Ensuring that updating a stock’s price or mutual fund’s quantity reflects accurately in portfolio calculations.
+   - Verify that updates to quantity and price are reflected accurately in portfolio calculations.
 
 3. **Displaying Portfolio**
-   - Checking that the portfolio displays the correct total value, including individual investment details.
-   - Ensuring the portfolio display handles both small and large portfolios correctly.
+   - Ensure correct display of total portfolio value and individual investment details for small and large portfolios.
 
 4. **Selling an Investment**
-   - Verifying that selling an investment reduces the portfolio’s holdings correctly, including commissions and fees.
-   - Ensuring that attempting to sell more than the available quantity results in an error message.
+   - Verify correct reduction in holdings, including handling of fees (stock commission or mutual fund redemption).
+   - Test for error messages when selling quantities greater than available.
 
 5. **Calculating Portfolio Value**
-   - Ensuring that the portfolio’s total value is calculated correctly after every change in investment value.
+   - Confirm accurate recalculation of total portfolio value after changes to investments.
 
 6. **Menu Navigation and Input Validation**
-   - Testing menu inputs for correctness, ensuring that invalid choices prompt the user to re-enter values.
-   - Ensuring case-insensitivity for commands (e.g., ‘q’, ‘Q’, ‘quit’, ‘QUIT’ should all work to quit).
+   - Validate all menu inputs and ensure invalid choices prompt appropriate error messages.
+   - Ensure case-insensitive commands (e.g., `q`, `Q`, `quit`, `QUIT`).
 
 ---
 
-### **Test Cases**
+## **Test Cases**
 
-#### **Case 1: Add a Stock Investment**
-**Test Objective:** the system can correctly add a stock to the portfolio.
+### **Case 1: Add a Stock Investment**
+**Test Objective:** Verify the system can correctly add a stock to the portfolio.
 
 - **Test Input:**
-  - Investment Type: Stock
-  - Stock Symbol: "AAPL"
-  - Stock Quantity: 10
-  - Stock Price: 150.00
+  - Investment Type: Stock  
+  - Stock Symbol: "AAPL"  
+  - Stock Quantity: 10  
+  - Stock Price: 150.00  
 
 - **Expected Output:**
-  - Portfolio should include the stock with the correct quantity and price.
-  - The total portfolio value should reflect the stock’s value (10 * 150 = 1500).
-  - Correct handling of commission for stock purchase.
+  - Portfolio includes the stock with the correct quantity and price.
+  - Total portfolio value is 10 × 150 = 1500.
+  - Stock purchase commission is handled correctly.
 
 ---
 
-#### **Case 2: Add a Mutual Fund Investment**
-**Test Objective:** the system can correctly add a mutual fund to the portfolio.
+### **Case 2: Add a Mutual Fund Investment**
+**Test Objective:** Verify the system can correctly add a mutual fund to the portfolio.
 
 - **Test Input:**
-  - Investment Type: MutualFund
-  - Mutual Fund Name: "Vanguard 500"
-  - Quantity: 5
-  - Price per Unit: 200.00
+  - Investment Type: Mutual Fund  
+  - Mutual Fund Name: "Vanguard 500"  
+  - Quantity: 5  
+  - Price per Unit: 200.00  
 
 - **Expected Output:**
-  - Portfolio should include the mutual fund with the correct quantity and price.
-  - The total portfolio value should reflect the mutual fund value (5 * 200 = 1000).
-  - Correct handling of redemption fee for mutual fund purchase.
+  - Portfolio includes the mutual fund with the correct quantity and price.
+  - Total portfolio value is 5 × 200 = 1000.
+  - Redemption fee is handled correctly.
 
 ---
 
-#### **Case 3: Update Stock Investment Price**
-**Test Objective:** Test if updating the price of a stock correctly updates the total portfolio value.
+### **Case 3: Update Stock Investment Price**
+**Test Objective:** Verify that updating the stock price adjusts the portfolio value correctly.
 
 - **Test Input:**
-  - Stock Symbol: "AAPL"
-  - New Price: 155.00
+  - Stock Symbol: "AAPL"  
+  - New Price: 155.00  
 
 - **Expected Output:**
-  - The new price for "AAPL" should be updated.
-  - Portfolio value should update to 10 * 155 = 1550.
+  - "AAPL" stock price is updated.
+  - Portfolio value is updated to 10 × 155 = 1550.
 
 ---
 
-#### **Case 4: Sell Stock Investment**
-**Test Objective:** Ensure that selling an investment properly reduces the portfolio holdings and applies the correct fee.
+### **Case 4: Sell Stock Investment**
+**Test Objective:** Verify selling an investment reduces holdings and applies the correct fee.
 
 - **Test Input:**
-  - Sell Stock: "AAPL"
-  - Quantity to Sell: 5
+  - Stock Symbol: "AAPL"  
+  - Quantity to Sell: 5  
 
 - **Expected Output:**
-  - Portfolio should reflect that only 5 shares of "AAPL" remain.
-  - The total portfolio value should decrease by the amount of the sale (5 * 155 = 775).
-  - Ensure commission fee of $9.99 is applied to the sale.
+  - Remaining "AAPL" quantity is 5.
+  - Total portfolio value decreases by 5 × 155 = 775.
+  - $9.99 commission fee is applied.
 
 ---
 
-#### **Case 5: Attempt to Sell More Than Available Stock**
-**Test Objective:** Ensure that attempting to sell more stock than available results in an error.
+### **Case 5: Attempt to Sell More Than Available Stock**
+**Test Objective:** Ensure error is displayed when attempting to sell more than available.
 
 - **Test Input:**
-  - Sell Stock: "AAPL"
-  - Quantity to Sell: 15 (more than 10 in the portfolio)
+  - Stock Symbol: "AAPL"  
+  - Quantity to Sell: 15  
 
 - **Expected Output:**
-  - Display error message: "You cannot sell more than the available quantity."
-  - Portfolio should remain unchanged.
+  - Error message: "You cannot sell more than the available quantity."
+  - Portfolio remains unchanged.
 
 ---
 
-#### **Case 6: Display Portfolio with Multiple Investments**
-**Test Objective:** Verify that the system correctly displays multiple investments in the portfolio.
+### **Case 6: Display Portfolio with Multiple Investments**
+**Test Objective:** Verify correct display of multiple investments in the portfolio.
 
 - **Test Input:**
-  - Add Stock: "AAPL" with 10 shares at $150
-  - Add Mutual Fund: "Vanguard 500" with 5 units at $200
+  - Add Stock: "AAPL", 10 shares at $150  
+  - Add Mutual Fund: "Vanguard 500", 5 units at $200  
 
 - **Expected Output:**
-  - Portfolio display should list both the stock and mutual fund.
-  - Total portfolio value should be correctly calculated as (10 * 150) + (5 * 200) = 1500 + 1000 = 2500.
+  - Portfolio displays both investments.
+  - Total portfolio value is (10 × 150) + (5 × 200) = 1500 + 1000 = 2500.
 
 ---
 
-#### **Case 7: Invalid Input for Menu Command**
-**Test Objective:** Test the program’s ability to handle invalid menu input.
+### **Case 7: Invalid Input for Menu Command**
+**Test Objective:** Verify system handles invalid menu inputs appropriately.
 
-- **Test Input:** 
-  - Enter "exit" or "bye" as a command.
+- **Test Input:**
+  - Enter "exit" or "bye" as a menu command.
 
 - **Expected Output:**
-  - Display error message: "Invalid option. Please enter a valid option."
-  - Prompt user to enter a valid option.
+  - Error message: "Invalid option. Please enter a valid option."
+  - User is prompted to re-enter a valid command.
 
 ---
 
-#### **Case 8: Quit Program**
-**Test Objective:** Ensure that the program quits correctly when the user opts to quit.
+### **Case 8: Quit Program**
+**Test Objective:** Verify the system exits cleanly when the user opts to quit.
 
-- **Test Input:** 
+- **Test Input:**  
   - Enter "q" or "quit" at the main menu.
 
 - **Expected Output:**
-  - Program should exit cleanly.
-  - No further prompts or operations should occur.
-
+  - Program exits cleanly without further prompts.
 
 ---
 
-### **Conclusion**
-
+## **Conclusion**
 The **Test Plan** and **Test Cases** outlined here ensure that the ePortfolio system functions correctly across different scenarios.

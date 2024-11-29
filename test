@@ -1,0 +1,2 @@
+Stock [symbol=AAPL, name=Apple, quantity=70, price=500.0, bookValue=11019.98]
+MutualFund [symbol=AAPL, name=Apple, quantity=60, price=100.0, bookValue=6000.0]

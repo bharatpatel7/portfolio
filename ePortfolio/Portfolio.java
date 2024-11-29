@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.io.PrintWriter;
 
 /**
  * Represents a portfolio of investments
@@ -47,30 +48,18 @@ public class Portfolio {
      * @param isMutualFund Whether the investment is a mutual fund
      */
     public void buyInvestment(String symbol, String name, int quantity, double price, boolean isMutualFund){
-
-        for (Investment inv : investment) {
-
-            if (inv.getSymbol().equalsIgnoreCase(symbol)){
-
-                inv.buy(quantity, price);
-                return;
-
+        Investment existing = findInvestment(symbol);
+        if (existing != null){
+            if ((isMutualFund && existing instanceof MutualFund) || (!isMutualFund && existing instanceof Stock)){
+                existing.buy(quantity, price);
+            } else {
+                throw new IllegalArgumentException("Investment with symbol " + symbol + " not found.");
             }
-
+        } else {
+            Investment newInvestment = isMutualFund ? new MutualFund(symbol, name, quantity, price, 0.0, "default") : new Stock(symbol, name, quantity, price, 0.0, "default");
+            investment.add(newInvestment);
+            updateNameIndex(newInvestment, investment.size() - 1);
         }
-        
-        // Create a new investment
-        Investment newInvestment;
-
-        // Create a new investment
-        if(isMutualFund){
-            newInvestment = new MutualFund(symbol, name, quantity, price, 0.0, "default");
-        }else{
-            newInvestment = new Stock(symbol, name, quantity, price, 0.0, "default");
-        }
-
-        // Add the investment to the list
-        investment.add(newInvestment);
     }
 
     // Method to sell investment
@@ -170,7 +159,7 @@ public class Portfolio {
 
         for(Investment investment : investment){
 
-            if (investment instanceof Stock){
+            /*if (investment instanceof Stock){
 
                 totalGain += ((Stock) investment).getGain();
 
@@ -178,10 +167,11 @@ public class Portfolio {
 
                 totalGain += ((MutualFund) investment).getGain();
 
-            }
+            }*/
+           totalGain += investment.getGain();
         }
 
-        System.out.println("Total Gain: " + String.format("%.2f", totalGain));
+        //System.out.println("Total Gain: " + String.format("%.2f", totalGain));
         return totalGain;
 
     }
@@ -192,9 +182,10 @@ public class Portfolio {
      * @param keywords The keywords to search for
      * @param priceRange The price range to search for
      */
-    public void search(String symbol, String keywords, String priceRange){
+    public String search(String symbol, String keywords, String priceRange){
 
         boolean found = false;
+        StringBuilder results = new StringBuilder();
 
         // Split the keywords
         String[] keywordList = keywords != null ? keywords.split(" ") : new String[0];
@@ -214,8 +205,8 @@ public class Portfolio {
     
                 } catch (NumberFormatException e){
     
-                    System.out.println("Invalid price range: " + priceRange);
-                    return;
+                    //System.out.println("Invalid price range: " + priceRange);
+                    return "Invalid Price Range! " + priceRange;
             }
 
         }
@@ -230,7 +221,7 @@ public class Portfolio {
 
             if (symbolMatch && keywordMatch && priceMatch){
 
-                System.out.println(inv);
+                results.append(inv).append("\n");
                 found = true;
 
             }
@@ -239,9 +230,11 @@ public class Portfolio {
 
         if(!found){
 
-            System.out.println("No Mathch Found!");
+            results.append("found no investments");
 
         }
+
+        return results.toString();
     }
     
 
@@ -252,11 +245,18 @@ public class Portfolio {
      * @return Whether all keywords match
      */
     private boolean allKeywordsMatch(String name, String[] keywords){
+
+        // Loop through the keywords
         for (String keyword : keywords){
+
             if(!name.toLowerCase().contains(keyword.toLowerCase())){
+
                 return false;
+
             }
+
         }
+
         return true;
     }
 
@@ -266,30 +266,54 @@ public class Portfolio {
      * @param name The name of the stock
      * @param quantity The quantity of the stock
      * @param price The price of the stock
+     * @return The total gain of the portfolio
      */
     public void buyStock(String symbol, String name, int quantity, double price) {
+
+        Investment existingInvestment = findInvestment(symbol);
+
+        if (existingInvestment != null) {
+
+            if (existingInvestment instanceof Stock) {
+
+                existingInvestment.buy(quantity, price);
+
+            } else {
+
+                throw new IllegalArgumentException("Investment with symbol " + symbol + " is not a stock.");
+            
+            }
+        }else{
+            
         Stock stock = new Stock(symbol, name, quantity, price, 0.0, "default");
         investment.add(stock);
-        System.out.println("Bought " + quantity + " stocks of " + name + " at $" + price + " each.");
+        //System.out.println("Bought " + quantity + " stocks of " + name + " at $" + price + " each.");
+    }
     }
 
-    
 
     // Method to sell stock
     /**
      * @param symbol The symbol of the stock
      * @param quantity The quantity of the stock
      * @param price The price of the stock
+     * @return The total gain of the portfolio
      */
     public void sellStock(String symbol, int quantity, double price) {
-        for (Investment investment : investment) {
-            if (investment instanceof Stock && investment.getSymbol().equals(symbol)) {
-                double gain = (price * quantity) - investment.getBookValue();
-                System.out.println("Payment received: " + (price * quantity));
-                System.out.println("Gain: " + String.format("%.2f", gain));
+
+        Investment investment = findInvestment(symbol);
+        if (investment != null && investment instanceof Stock) {
+
+            investment.sell(quantity, price);
+            if(investment.getQuantity() == 0){
+
                 this.investment.remove(investment);
-                break;
+
             }
+        }else{
+
+            throw new IllegalArgumentException("Stock with symbol " + symbol + " not found.");
+        
         }
     }
 
@@ -299,15 +323,31 @@ public class Portfolio {
      * @param name The name of the mutual fund
      * @param quantity The quantity of the mutual fund
      * @param price The price of the mutual fund
+     * @return The total gain of the portfolio
      */
     public void buyMutualFund(String symbol, String name, int quantity, double price) {
-        Investment investment = findInvestment(symbol);
-        if (investment != null && investment instanceof MutualFund){
-            investment.buy(quantity, price);
+
+        // Find the investment
+        Investment existingInvestment = findInvestment(symbol);
+        if (existingInvestment != null) {
+
+            if (existingInvestment instanceof MutualFund) {
+
+                existingInvestment.buy(quantity, price);
+
+            } else {
+
+                throw new IllegalArgumentException("An investment with the symbol " + symbol + " already exists as a Stock.");
+            
+            }
         } else {
-            this.investment.add(new MutualFund(symbol, name, quantity, price, 0.0, "default"));
+
+            MutualFund mutualFund = new MutualFund(symbol, name, quantity, price, 0.0, "default");
+            investment.add(mutualFund);
+        
         }
     }
+    
 
     // Method to sell mutual fund
     /**
@@ -316,14 +356,21 @@ public class Portfolio {
      * @param price The price of the mutual fund
      */
     public void sellMutualFund(String symbol, int quantity, double price) {
+
         Investment investment = findInvestment(symbol);
+
         if (investment != null && investment instanceof MutualFund){
+
             investment.sell(quantity, price);
-            if(investment instanceof MutualFund && ((MutualFund) investment).getQuantity() == 0){
+
+            if(investment.getQuantity() == 0){
                 this.investment.remove(investment);
             }
+
         } else {
-            System.out.println("Mutual Fund not found.");
+
+            throw new IllegalArgumentException("Mutual fund with symbol " + symbol + " not found.");
+            
         }
     }
 
@@ -333,6 +380,14 @@ public class Portfolio {
      * @return The total gain of the portfolio
      */
     public double getTotalGain() {
+
+        double totalGain = 0.0;
+        for (Investment investment : investment){
+
+            totalGain += investment.getGain();
+
+        }
+        
         return Math.round(getTotalGain() * 100.0) / 100.0; // Rounded to two decimal places
         //return 0.0;
     }
@@ -343,9 +398,13 @@ public class Portfolio {
      * @return The investment with the given symbol, or null if not found
      */
     private Investment findInvestment(String symbol) {
+
         for (Investment investment : investment) {
+
             if (investment.getSymbol().equalsIgnoreCase(symbol)) {
+
                 return investment;
+            
             }
         }
         return null;
@@ -356,7 +415,9 @@ public class Portfolio {
      * @param filename The name of the file to load investments from
      */
     public void loadInvestments(String filename){
+
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            
             String line;
             Investment investment = null;
 
@@ -438,6 +499,14 @@ public class Portfolio {
 
             System.out.println("Error reading file: " + e.getMessage());
 
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+
+            } catch (IOException ex) {
+
+            System.out.println("Error creating file: " + ex.getMessage());
+
+        }
+
         }
     }
 
@@ -447,9 +516,14 @@ public class Portfolio {
      * @param index The index of the investment
      */
     private void updateNameIndex(Investment investment, int index){
+
+        // Split the name into keywords
         String[] keywords = investment.getName().toLowerCase().split(" ");
+
         for (String keyword : keywords){
+            
             nameIndex.computeIfAbsent(keyword, k -> new ArrayList<>()).add(index);
+
         }
     }
 
@@ -459,12 +533,19 @@ public class Portfolio {
      * @return The list of investments that match the keywords
      */
     private Investment createInvestment(String type){
+
         if (type.equalsIgnoreCase("stock")){
+
             return new Stock("", "", 0, 0.0, 0.0, "default");
+
         } else if (type.equalsIgnoreCase("mutual fund")){
+
             return new MutualFund("", "", 0, 0.0, 0.0, "default");
+
         } else {
+
             throw new IllegalArgumentException("Invalid investment type.");
+
         }
     }
 
@@ -473,19 +554,19 @@ public class Portfolio {
      * @param keywords The keywords to search for
      * @return The list of investments that match the keywords
      */
-    public void saveInvestment(String filename) {
+    public void saveInvestments(String filename) {
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))){
+        try (PrintWriter writer = new PrintWriter(new FileWriter(filename))){
 
-            for (Investment investment : this.investment){
-
-                writer.write("type = \"" + investment.getClass().getSimpleName().toLowerCase() + "\"\n");
+            for (Investment investment : investment){
+                writer.println(investment.toString());
+                /* writer.write("type = \"" + investment.getClass().getSimpleName().toLowerCase() + "\"\n");
                 writer.write("symbol = \"" + investment.getSymbol() + "\"\n");
                 writer.write("name = \"" + investment.getName() + "\"\n");
                 writer.write("quantity = " + investment.getQuantity() + "\n");
                 writer.write("price = " + investment.getPrice() + "\n");
                 writer.write("bookValue = " + investment.getBookValue() + "\n");
-                writer.write("\n");
+                writer.write("\n"); */
 
             }
 
@@ -496,6 +577,38 @@ public class Portfolio {
         }
     }
 
+    // Method to get investment
+    public Investment getInvestment(int index) {
+
+        if (index >= 0 && index < investment.size()) {
+
+            return investment.get(index);
+
+        } else {
+
+            throw new IndexOutOfBoundsException("Invalid index: " + index);
+
+        }
+    }
+
+    // Method to get investments
+    public List<Investment> getInvestments() {
+
+        return investment;
+
+    }
+
+    // Method to get file name
+    public String getFileName() {
+    return fileName;
+
+    
+    
+}
+
+
+
 
 }
+
 
